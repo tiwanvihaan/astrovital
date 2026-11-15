@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 221 50% 6%;
+    --foreground: 210 40% 97%;
+    --card: 219 43% 12%;
+    --card-foreground: 210 40% 97%;
+    --popover: 220 44% 9%;
+    --popover-foreground: 210 40% 97%;
+    --primary: 191 100% 67%;
+    --primary-foreground: 221 60% 8%;
+    --secondary: 219 34% 17%;
+    --secondary-foreground: 210 40% 97%;
+    --muted: 219 30% 16%;
+    --muted-foreground: 215 22% 64%;
+    --accent: 219 34% 19%;
+    --accent-foreground: 210 40% 97%;
+    --destructive: 351 84% 62%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 28% 20%;
+    --input: 217 28% 22%;
+    --ring: 191 100% 67%;
+    --radius: 1.25rem;
+
+    --surface: 219 43% 11%;
+    --surface-raised: 219 36% 15%;
+    --hairline: 217 27% 23%;
+    --accent-cyan: 191 100% 67%;
+    --accent-violet: 248 100% 77%;
+    --accent-mint: 160 78% 62%;
+    --accent-amber: 38 95% 63%;
+    --accent-rose: 351 90% 68%;
+
+    --font-heading: 'Rubik Mono One', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-display: 'Rubik Mono One', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --success: 160 78% 62%;
+    --success-foreground: 160 60% 8%;
+    --warning: 38 95% 63%;
+    --warning-foreground: 38 80% 8%;
+
+    --chart-1: 191 100% 67%;
+    --chart-2: 248 100% 77%;
+    --chart-3: 160 78% 62%;
+    --chart-4: 38 95% 63%;
+    --chart-5: 351 90% 68%;
+
+    --type-scale: 1;
+    --heading-scale: 1;
+  }
+}
+
+/* Typography preferences from Appearance settings (font family comes from --font-body). */
+#root {
+  zoom: var(--type-scale, 1);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  zoom: var(--heading-scale, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(900px 620px at 8% -12%, hsl(var(--accent-cyan) / 0.1), transparent 62%),
+      radial-gradient(760px 520px at 100% -4%, hsl(var(--accent-violet) / 0.11), transparent 58%),
+      radial-gradient(700px 500px at 60% 110%, hsl(var(--accent-violet) / 0.06), transparent 60%);
+    background-attachment: fixed;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(217 27% 26%);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(217 27% 32%);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+    @apply font-body tracking-tight;
+  }
+
+  .theme-transition,
+  .theme-transition * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 0.35s;
+    transition-timing-function: ease;
+  }
+
+  .hairline {
+    @apply border-hairline;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
